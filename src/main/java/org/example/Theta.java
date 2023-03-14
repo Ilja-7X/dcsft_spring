@@ -4,10 +4,10 @@ public class Theta {
     public static double calculate(int N, int n, int m, double lambda, int mu)
     {
         double res1 = 0;
-        for (int j = n+1; j <= N; j++) {
+        for (int j = n + 1; j <= N + 1; j++) {
             double res2 = 1;
 
-            for(int l = n; l <= j-1; l++) {
+            for(int l = n; l <= j - 1; l++) {
                 int mu_l;
 
                 if(l >= N-m &&  l <= N) {
@@ -23,10 +23,10 @@ public class Theta {
                 }
 
 
-                res2 *= (double) mu_l / l / lambda + (double) 1 / n / lambda;
+                res2 *= (double) mu_l / l / lambda;
 
             }
-            res1 += (double) 1 / j / lambda * res2;
+            res1 += (double) 1 / j / lambda * res2 + (double) 1 / (n * lambda);
         }
         return res1;
     }
