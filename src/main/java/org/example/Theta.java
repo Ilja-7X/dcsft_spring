@@ -28,6 +28,7 @@ public class Theta {
             }
             res1 += (double) 1 / j / lambda * res2 + (double) 1 / (n * lambda);
         }
+        //res1 += 1.0 / (N * lambda); // then first for(int j = n + 1; j <= N; j++)
         return res1;
     }
 }
