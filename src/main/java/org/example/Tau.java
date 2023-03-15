@@ -25,6 +25,6 @@ public class Tau {
         }
         double result = product1 + sum;
 
-        return 0;
+        return result;
     }
 }
