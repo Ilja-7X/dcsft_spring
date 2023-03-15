@@ -5,6 +5,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static org.example.Theta.calculate;
+
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -16,15 +18,22 @@ public class Main {
         ArrayList<Integer> mu = new ArrayList<>();
 
 
-        File inFile = new File("in2.txt");
+        File inFile = new File("in1.txt");
         Scanner scanner = new Scanner(inFile);
 
         String str;
         String[] memberString;
+
         for(int i = 0; i < 4; i++)
         {
             str = scanner.nextLine();
             memberString = str.split(" ");
+            /*
+            1. n
+            2. m
+            3. lambda
+            4. mu
+            */
             switch (i) {
                 case 0:
                     for(String num : memberString) {
@@ -70,8 +79,39 @@ public class Main {
             }
         }
 
-        File outFile = new File("out.txt");
-        int i = 55;
+        int i = 1;
+
+
+        for(Double lambda_cur : lambda){
+            for(Integer mu_cur : mu){
+                for(Integer m_cur : m){
+                    File outFile = new File("out" + i++ + ".txt");
+                    try (PrintWriter out = new PrintWriter(outFile, StandardCharsets.UTF_8)){
+                    // System.out.println("mu = " + mu_cur);
+                    for(Integer n_cur : n){
+                        System.out.println(n_cur + " = " +calculate(N, n_cur, m_cur, lambda_cur, mu_cur));
+                        out.print(n_cur + " " +calculate(N, n_cur, m_cur, lambda_cur, mu_cur) + "\n");
+                    }
+                        System.out.println("-----------------------------");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        /*int m_cur = 1;
+        //int N_cur = 65536;
+        int mu_cur = 1;
+        double lambda_cur = 0.00001;//1E-5;
+        for(Integer n_cur : n){
+            System.out.println(n_cur + " = " +calculate(N, n_cur, m_cur, lambda_cur, mu_cur));
+        }
+        System.out.println("-----------------------------");*/
+
+
+
+        /*int i = 55;
 
         try (PrintWriter out = new PrintWriter(outFile, StandardCharsets.UTF_8))
         {
@@ -79,6 +119,6 @@ public class Main {
             System.out.println("Successfully written data to the file");
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
