@@ -25,7 +25,7 @@ for i in range(len(datafiles)):
     y = data[:, 1]
     ax.plot(x,y,'o-',markersize=2,c=colors[i], label = label[i])
 plt.legend()
-plt.yscale("log");
+plt.yscale("linear");
 plt.ylim((None, 1.2));
 
 fig.savefig('Tau_λ.png', dpi=1000)
