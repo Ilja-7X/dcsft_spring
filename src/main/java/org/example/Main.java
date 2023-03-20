@@ -10,7 +10,7 @@ import static org.example.Theta.calculate;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        int N = 65536;
+        int N = 8192;
 
         ArrayList<Integer> n = new ArrayList<>();
         ArrayList<Integer> m = new ArrayList<>();
@@ -18,7 +18,7 @@ public class Main {
         ArrayList<Integer> mu = new ArrayList<>();
 
 
-        File inFile = new File("in1.txt");
+        File inFile = new File("in_data/in5.txt");
         Scanner scanner = new Scanner(inFile);
 
         String str;
@@ -85,12 +85,12 @@ public class Main {
         for(Double lambda_cur : lambda){
             for(Integer mu_cur : mu){
                 for(Integer m_cur : m){
-                    File outFile = new File("out" + i++ + ".txt");
+                    File outFile = new File("out_data/out5_" + i++ + ".txt");
                     try (PrintWriter out = new PrintWriter(outFile, StandardCharsets.UTF_8)){
                     // System.out.println("mu = " + mu_cur);
                     for(Integer n_cur : n){
-                        System.out.println(n_cur + " = " +calculate(N, n_cur, m_cur, lambda_cur, mu_cur));
-                        out.print(n_cur + " " +calculate(N, n_cur, m_cur, lambda_cur, mu_cur) + "\n");
+                        System.out.println(n_cur + " = " +Tau.calculate(N, n_cur, m_cur, lambda_cur, mu_cur));
+                        out.print(n_cur + " " + Tau.calculate(N, n_cur, m_cur, lambda_cur, mu_cur) + "\n");
                     }
                         System.out.println("-----------------------------");
                     } catch (IOException e) {
