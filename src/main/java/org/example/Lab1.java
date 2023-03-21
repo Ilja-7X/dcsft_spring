@@ -5,10 +5,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static org.example.Theta.calculate;
 
-
-public class Main {
+public class Lab1 {
     public static void main(String[] args) throws IOException {
         int N = 8192;
 
